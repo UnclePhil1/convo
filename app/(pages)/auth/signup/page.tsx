@@ -4,7 +4,6 @@ import Image from "next/image";
 import Logo from "@/../../public/images/convo.png";
 import SignInImg from "@/../../public/images/signup.svg";
 import "@/../../components/style.css";
-import Button from "@/components/atoms/button";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import axios from "axios";
@@ -19,23 +18,20 @@ const Signup: React.FC = () => {
   });
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [loading, setLoading] = useState(false);
-
   const router = useRouter();
 
-  const handleSignUp = async () => {
+  const onSignUp = async () => {
     try {
       setLoading(true); // Set loading to true to indicate the ongoing request
       const response = await axios.post("/api/users/signup", user);
       console.log("SignUp Successful", response.data);
-      toast.success("Sign up successful!"); // Display a success message
-      // Redirect to the signin page after a successful signup
-      router.push("/auth/signin");
-      window.location.href = '/auth/signin';
+      toast.success("Sign up successful!");
+        router.push("/auth/signin");
     } catch (error: any) {
-      toast.error(error.message); // Display an error message
+      toast.error(error.message);
       console.log("Not signup", error.message);
     } finally {
-      setLoading(false); // Set loading to false after the request completes
+      setLoading(false);
     }
   };
 
@@ -69,7 +65,7 @@ const Signup: React.FC = () => {
             height={300}
             className="w-[250px] h-[250px]"
           />
-          <form action="" className="flex flex-col justify-center items-center">
+          <form action="/auth/signin" className="flex flex-col justify-center items-center">
             <h1 className="text-[1.5em] font-medium">
               {loading ? "Processing" : "SignUp"}
             </h1>
@@ -105,12 +101,11 @@ const Signup: React.FC = () => {
               placeholder="Your Password"
               className="w-[250px] md:w-[350px] mt-2 py-2 px-4 border rounded-md border-blue-100 focus:outline-primary"
             />
-            {/* <Button
-              text={buttonDisabled ? "Not SignedIn" : "SignUp"}
-              onClick={handleSignUp}
-            /> */}
-            
-            <button onClick={handleSignUp} className="w-[200px] md:w-[350px] my-4 py-2 px-4 border rounded-md bg-primary text-white">
+            <button
+              type="submit"
+              onClick={onSignUp}
+              className="w-[200px] md:w-[350px] my-4 py-2 px-4 border rounded-md bg-primary text-white"
+            >
               {buttonDisabled ? "Not SignedIn" : "SignUp"}
             </button>
             <span className="flex justify-center items-center">
