@@ -1,4 +1,4 @@
-import mongoose, { Schema, Document } from 'mongoose';
+import mongoose from 'mongoose';
 
 const userScheme = new mongoose.Schema({
   username: {
@@ -38,6 +38,6 @@ const userScheme = new mongoose.Schema({
   verifyTokenExpiry: Date,
 });
 
-const User = mongoose.models.users || mongoose.model("Users", userScheme);
+const User = mongoose.models.User || mongoose.model("Users", userScheme);
 
 export default User;

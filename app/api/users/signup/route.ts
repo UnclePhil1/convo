@@ -2,6 +2,8 @@ import { connect } from "@/dbconfig/dbconfig";
 import { NextRequest, NextResponse } from "next/server";
 import User from "@/models/userModel";
 import * as bcryptjs from 'bcryptjs';
+require('dotenv').config();
+
 
 
 connect();
@@ -25,7 +27,7 @@ export async function POST(request: NextRequest) {
       username,
       email,
       phone,
-      password: hashedPassword,
+      password: hashedPassword
     });
 
     const savedUser = await newUser.save();

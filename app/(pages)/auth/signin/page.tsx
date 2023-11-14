@@ -10,30 +10,29 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 const Signin: React.FC = () => {
+  const router = useRouter();
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
 
-  
   const handleSignin = async () => {
     try {
-      setLoading(true); // Set loading to true to indicate the ongoing request
+      setLoading(true);
       const response = await axios.post("/api/users/signin", user);
-      console.log("SignUp Successful", response.data);
-      toast.success("Sign up successful!");
-      router.push("/profile");
+      console.log("SignIn Successful", response.data);
+      toast.success("SignIn successful!");
+      router.push("/auth/successful");
     } catch (error: any) {
-      toast.error("Sign up successful!");
-      console.log("Not signin", error.message);
+      console.log("Login Failed", error.message);
+      toast.error(error.message);
     } finally {
       setLoading(false);
     }
   };
-  
+
   useEffect(() => {
     if (user.email.length > 0 && user.password.length > 0) {
       setButtonDisabled(false);
@@ -43,7 +42,7 @@ const Signin: React.FC = () => {
   }, [user]);
   return (
     <div>
-      <div className="w-[100%] h-[100vh] relative signinbg grid grid-cols-1 lg:grid-cols-2 justify-center items-center py-4 px-[5%]">
+      <div className="w-[100%] h-auto lg:h-[100%] relative signinbg grid grid-cols-1 lg:grid-cols-2 justify-center items-center py-4 px-[5%]">
         <Image
           src={SignInImg}
           alt="signin.png"
@@ -59,15 +58,15 @@ const Signin: React.FC = () => {
             height={300}
             className="w-[250px] h-[250px]"
           />
-          <form action="" className="flex flex-col justify-center items-center">
+          <div className="flex flex-col justify-center items-center">
             <h1 className="text-[1.5em] font-medium">
-              {loading ? "Processing" : "SignUp"}
+              {loading ? "Processing" : "SignIn"}
             </h1>
             <input
               name="email"
               type="email"
               value={user.email}
-              onChange={(e) => setUser({ ...user, email: e.target.value })}
+              onChange={(e) => setUser({ ...user, email: e.target.value})}
               placeholder="Your Email"
               className="w-[250px] md:w-[350px] my-2 py-2 px-4 border rounded-md border-blue-100 focus:outline-primary"
             />
@@ -75,7 +74,7 @@ const Signin: React.FC = () => {
               name="password"
               type="password"
               value={user.password}
-              onChange={(e) => setUser({ ...user, password: e.target.value })}
+              onChange={(e) => setUser({ ...user, password: e.target.value})}
               placeholder="Your Password"
               className="w-[250px] md:w-[350px] mt-2 py-2 px-4 border rounded-md border-blue-100 focus:outline-primary"
             />
@@ -101,7 +100,7 @@ const Signin: React.FC = () => {
                 SignUp
               </Link>
             </span>
-          </form>
+          </div>
         </div>
       </div>
     </div>

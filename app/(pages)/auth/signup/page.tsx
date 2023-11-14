@@ -26,7 +26,7 @@ const Signup: React.FC = () => {
       const response = await axios.post("/api/users/signup", user);
       console.log("SignUp Successful", response.data);
       toast.success("Sign up successful!");
-        router.push("/auth/signin");
+        router.push("/profile");
     } catch (error: any) {
       toast.error(error.message);
       console.log("Not signup", error.message);
@@ -49,7 +49,7 @@ const Signup: React.FC = () => {
 
   return (
     <div>
-      <div className="w-[100%] h-auto lg:h-[100vh] relative signupbg grid grid-cols-1 lg:grid-cols-2 justify-center items-center py-4 px-[5%]">
+      <div className="w-[100%] h-auto lg:h-[100%] relative signupbg grid grid-cols-1 lg:grid-cols-2 justify-center items-center py-4 px-[5%]">
         <Image
           src={SignInImg}
           alt="signin.png"
@@ -63,9 +63,9 @@ const Signup: React.FC = () => {
             alt="signin.png"
             width={700}
             height={300}
-            className="w-[250px] h-[250px]"
+            className="w-[200px] h-[200px]"
           />
-          <form action="/auth/signin" className="flex flex-col justify-center items-center">
+          <div className="flex flex-col justify-center items-center">
             <h1 className="text-[1.5em] font-medium">
               {loading ? "Processing" : "SignUp"}
             </h1>
@@ -117,7 +117,7 @@ const Signup: React.FC = () => {
                 SignIn
               </Link>
             </span>
-          </form>
+          </div>
         </div>
       </div>
     </div>
