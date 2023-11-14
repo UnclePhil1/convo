@@ -18,7 +18,7 @@ const ChooseMethod: React.FC = () => {
         href={"/profile"}
         className="text-green-600 border-2 border-green-600 hover:bg-green-100 text-[18px] py-2 px-6 rounded-md top-10 left-10 mt-10"
       >
-        Let's Chat
+        Lets Chat
       </Link>
     </div>
   );
