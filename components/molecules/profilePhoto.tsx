@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import React, { useState, ChangeEvent, useEffect } from "react";
 
 const ImageUpload: React.FC = () => {
@@ -41,7 +42,7 @@ const ImageUpload: React.FC = () => {
     <div>
       <input type="file" accept="image/*" onChange={handleImageChange} />
       {selectedImage && (
-          <img
+          <Image
             src={selectedImage}
             alt="Selected"
             style={{ maxWidth: "100%", maxHeight: "300px" }}
