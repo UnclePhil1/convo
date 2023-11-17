@@ -26,7 +26,7 @@ const Signup: React.FC = () => {
       const response = await axios.post("/api/users/signup", user);
       console.log("SignUp Successful", response.data);
       toast.success("Sign up successful!");
-        router.push("/profile");
+        router.push("/auth/signin");
     } catch (error: any) {
       toast.error(error.message);
       console.log("Not signup", error.message);

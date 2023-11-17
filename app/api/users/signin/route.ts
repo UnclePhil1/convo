@@ -2,6 +2,7 @@ import { connect } from "@/dbconfig/dbconfig";
 import { NextRequest, NextResponse } from "next/server";
 import User from "@/models/userModel";
 import * as bcryptjs from "bcryptjs";
+import { usersCollection } from "@/app/api/mongodb";
 import jwt from "jsonwebtoken";
 require('dotenv').config();
 
@@ -15,12 +16,10 @@ export async function POST(request: NextRequest) {
     const { email, password } = reqBody;
     console.log(reqBody);
 
-    const user = await User.findOne({email});
+    const user = await usersCollection.findRecord({ email });
     if (!user) {
       return NextResponse.json({ error: "User does Exist" }, { status: 400 });
     }
-
-    console.log("user exit")
 
     const validPassword = await bcryptjs.compare(password, user.password);
     if (!validPassword) {
