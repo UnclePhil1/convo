@@ -1,9 +1,9 @@
 'use client'
-import { KeyboardArrowDownOutlined, StarBorderPurple500Outlined, PeopleAltOutlined } from '@mui/icons-material';
+import { KeyboardArrowDownOutlined, InfoOutlined, PeopleAltOutlined } from '@mui/icons-material';
 import Image from 'next/image';
 import React, { useState } from 'react'
 
-const Dropbox:React.FC = () => {
+const DropboxInfo:React.FC = () => {
     const [show, setShow] = useState(false);
 
     const handleToggle = () => {
@@ -11,15 +11,14 @@ const Dropbox:React.FC = () => {
     };
 
     return (
-
-        <div className='flex flex-col justify-center items-center rounded-[20px] bg-pink-100'>
-            <div className='flex flex-row gap-4 justify-center items-center px-2 py-4'>
-                <StarBorderPurple500Outlined className='text-yellow-500 text-[25px] bg-slate-50 p-1 rounded-full' />
-                <button type='button' onClick={handleToggle} className='text-[14px]'>Starred Messages</button>
+        <div className='w-[100%] flex flex-col justify-center items-center rounded-[20px] bg-blue-100'>
+            <div className='w-[100%] flex flex-row gap-4 justify-evenly items-center px-2 py-4'>
+                <InfoOutlined className='text-yellow-500 text-[25px] bg-slate-50 p-1 rounded-full' />
+                <button type='button' onClick={handleToggle} className='text-[14px]'>Information</button>
                 <KeyboardArrowDownOutlined />
             </div>
-            <div className={`${show ? 'flex' : 'hidden'} justify-start gap-4 items-center`}>
-                <div className='px-2 py-2 border-2 border-t-slate-50 flex flex-col justify-start self-start gap-4 items-center border-b-transparent border-l-transparent border-r-transparent'>
+            <div className={`${show ? 'flex' : 'hidden'} justify-start gap-4 items-center w-[100%]`}>
+                <div className='w-[100%] px-2 py-2 border-2 border-t-slate-50 flex flex-col justify-start self-start gap-4 items-center border-b-transparent border-l-transparent border-r-transparent'>
                     <div className='flex justify-start items-center self-start hover:bg-pink-50 w-[100%] p-2 rounded-full'>
                         <PeopleAltOutlined />
                         <p className='text-[13px] font-semibold pl-2 cursor-pointer'>Message From Paul</p>
@@ -42,4 +41,4 @@ const Dropbox:React.FC = () => {
     )
 }
 
-export default Dropbox;
+export default DropboxInfo;

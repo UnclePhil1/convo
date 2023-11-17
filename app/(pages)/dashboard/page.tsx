@@ -5,11 +5,11 @@ import React from "react";
 const Dashboard: React.FC = () => {
   return (
     <div>
-      <div className="w-[100%] h-auto flex gap-5 justify-center items-center p-8">
-        <div className="w-[70%]">
+      <div className="w-[100%] h-auto flex gap-5 justify-center items-center p-8 overflow-hidden">
+        <div className="w-[70%] h-[100%]">
           <ChartArea />
         </div>
-        <div className="w-[30%]">
+        <div className="w-[30%] h-[100%] overflow-hidden">
           <Profile />
         </div>
       </div>

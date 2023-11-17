@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Person, NotificationAdd, FileCopySharp, CalendarViewDayRounded, Settings, Sms } from "@mui/icons-material";
 import Image from "next/image";
+import Trans from '@/../../public/images/trans.png'
 import "../../components/style.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -61,10 +62,12 @@ const Sidebar:React.FC = () => {
         onMouseEnter={handleHover}
         onMouseLeave={handleMouseLeave}
       >
+
+        {/* <Image src={Trans} alt="imag.png" width={700} height={300} className=""/> */}
         <ul
           className={`${
             hovered ? "mt-[20px]" : "mt-[20px]"
-          } flex flex-col justify-end align-end items-start gap-[10px]`}
+          } flex flex-col justify-center align-center items-center gap-[10px]`}
         >
           {SideList.map((item, i) => (
             <li key={i} className={`${pathname == item.path ? 'border-l-[3px] border-l-white border-r-transparent border-t-transparent border-b-transparent border' : ''} flex w-[100%] justify-start items-center hover:bg-[#4d94ff14]`}>

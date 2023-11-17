@@ -32,6 +32,16 @@
     height: 100vh;
 }
 
-.testing{
-    color: rgba(4, 4, 77, 0.356);
-}
+.scrollbar::-webkit-scrollbar {
+    width: 0;
+  }
+  
+  /* Optional: Style the scrollbar track */
+  .scrollbar::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  
+  /* Optional: Style the scrollbar thumb (the draggable part) */
+  .scrollbar::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }

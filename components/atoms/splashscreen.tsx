@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import SplashImg from "@/../../public/images/logo.png";
+import SplashImg from "@/../../public/images/1.png";
 import SpinnerComponent from "./spinner";
 
 const SplashScreen: React.FC = () => {

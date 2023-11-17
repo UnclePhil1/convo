@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Logo from "@/../../public/images/convo.png";
-import SignInImg from "@/../../public/images/signup.svg";
+import SignInImg from "@/../../public/images/3.png";
 import "@/../../components/style.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
